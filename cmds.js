@@ -51,7 +51,7 @@ exports.playCmd = rl => {
         if(toBeResolved.length === 0){
             log("Se acabaron las preguntas");
             log("Fin del juego. Aciertos:");
-            biglog(score, 'magenta');
+            biglog(score, 'red');
             rl.prompt();
         }else{
             let id = toBeResolved[Math.floor((Math.random() * toBeResolved.length))];
