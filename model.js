@@ -1,48 +1,44 @@
 const fs = require ("fs");
+
 const DB_FILENAME ="quizzes.json";
-
-
-
-
-
-
-
 
 
 let quizzes = [
 {
-    question: "Capital de Holanda"
+    question: "Capital de Holanda",
     answer: "Amsterdam"
 
 
 },
 {
 
-	question: "Capital de Noruega"
+	question: "Capital de Noruega",
 	answer: "Oslo"
 
 },
 {
-    question: "Capital de Cuba"
+    question: "Capital de Cuba",
     answer: "La Havana"
 
 },
 {
-    question: "Capital de Corea Del Norte"
+    question: "Capital de Corea Del Norte",
     answer: "Pyongyang"
 
 }];
 
 
 const load = () => {
-    fs.readFile{DB_FILENAME, (err, data) =>{
-        if(err) {
+    fs.readFile(DB_FILENAME, (err, data) =>{
+        if(err){
             if (err.code === "ENOENT"){
                 save();
                 return;
             }
+
             throw err;
         }
+
         let json = JSON.parse(data);
         if (json){
             quizzes = json;
@@ -54,6 +50,7 @@ const load = () => {
 const save = () => {
     fs.writeFile(DB_FILENAME,
         JSON.stringify(quizzes),
+
         err => {
             if (err) throw err;
         });
@@ -66,6 +63,7 @@ exports.add = (question, answer) => {
     quizzes.push({
         question: (question || "").trim(),
         answer: (answer || "").trim()
+        
         });
 
     save();
@@ -82,7 +80,7 @@ exports.update = (id, question, answer) => {
         question: (question || "").trim(),
         answer: (answer || "").trim()
     });
-    
+
     save();
 };
 
