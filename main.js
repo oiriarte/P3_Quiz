@@ -1,7 +1,7 @@
-
 const readline = require('readline');
 const {log, biglog, errorlog, colorize} = require("./out");
 const cmds = require ('./cmds');
+const model = require('./model');
 
 //Mensaje Inicial
 
@@ -89,6 +89,5 @@ rl
   log('Hasta luego!');
   process.exit(0);
 });
-
 
 
