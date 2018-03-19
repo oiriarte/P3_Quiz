@@ -23,15 +23,14 @@ exports.helpCmd = rl => {
 
 
 const validateId = id => {
-
-    return new Sequelize.Promise ((resolve, reject) => {
-        if (typeof id === "undefined") {
-            reject (new Error(`Falta parámetro <id>.`));
-        } else {
+	return new Sequelize.Promise((resolve, reject)=>{
+        if (typeof id === "undefined"){
+            reject(new Error(`Falta parámetro <id>.`));
+        }else{
             id = parseInt(id);
-            if (Number.isNaN(id)) {
+            if(Number.isNaN(id)){
                 reject(new Error(`El valor del parámetro <id> no es un número.`));
-            } else {
+            }else{
                 resolve(id);
             }
         }
@@ -39,10 +38,10 @@ const validateId = id => {
 };
 
 
-exports.listCmd = rl => {
-    models.quizzes.findAll()
-    .each(quiz => {
-            log(`[${colorize(quiz.id, 'magenta')}] ${quiz.question}`);
+exports.listCmd = rl =>{
+    models.quiz.findAll()
+    .each(quiz =>{
+            log(`[${colorize(quiz.id, 'magenta')}]: ${quiz.question}`);
     })
     .catch(error => {
         errorlog(error.message);
